@@ -1,0 +1,357 @@
+#semana 8: Error estandar.
+#Valentina Vargas
+
+set.seed(999)
+
+# Generar la población
+pop <- ceiling(rnorm(5000, mean = 35,sd = 1))
+
+# Tomar muestras en tres playas distintas
+m1 <- sample(x = pop,size = 10, replace = T)
+m2 <- sample(x = pop,size = 10, replace = T)
+m3 <- sample(x = pop,size = 10, replace = T)
+
+#Calcular media, desviación y error
+
+#m1
+mean(m1)
+sd(m1)
+sd(m1)/sqrt(length(m1))
+
+#m2
+mean(m2)
+sd(m2)
+sd(m2)/sqrt(length(m2))
+
+#m3
+mean(m3)
+sd(m3)
+sd(m3)/sqrt(length(m3))
+
+# se realiza un boxplot de las muestras
+boxplot(cbind(m1,m2,m3))
+
+# Error estandar 
+sd(c(m1,m2,m3))/sqrt(length(c(m1,m2,m3)))
+
+#Ejer:  Aumente el valor de desviación estándar y evalúe cómo cambia el error estándar.
+pop <- ceiling(rnorm(5000, mean = 35,sd = 5))
+pop
+?ceiling
+
+# Tomar muestras en tres playas distintas
+m1 <- sample(x = pop,size = 10, replace = T)
+m2 <- sample(x = pop,size = 10, replace = T)
+m3 <- sample(x = pop,size = 10, replace = T)
+
+# Calcular media, desviación y error
+#m1
+mean(m1)
+sd(m1)
+sd(m1)/sqrt(length(m1))
+#m2
+mean(m2)
+sd(m2)
+sd(m2)/sqrt(length(m2))
+#m3
+mean(m3)
+sd(m3)
+sd(m3)/sqrt(length(m3))
+
+#Boxplot
+boxplot(cbind(m1,m2,m3))
+
+# Error estandar 
+sd(c(m1,m2,m3))/sqrt(length(c(m1,m2,m3)))
+
+#Ejer:  Cambie aumente el tamaño de la muestra y evalúe cómo cambia el error estándar.
+
+set.seed(999)
+pop <- ceiling(rnorm(5000, mean = 35,sd = 5))
+?ceiling
+
+# Tomar muestras en tres playas distintas
+m1 <- sample(x = pop,size = 20, replace = T)
+m2 <- sample(x = pop,size = 20, replace = T)
+m3 <- sample(x = pop,size = 20, replace = T)
+
+# Calcular media, desviación y error
+mean(m1)
+sd(m1)
+sd(m1)/sqrt(length(m1))
+mean(m2)
+sd(m2)
+sd(m2)/sqrt(length(m2))
+mean(m3)
+sd(m3)
+sd(m3)/sqrt(length(m3))
+
+#Boxplot
+boxplot(cbind(m1,m2,m3))
+
+# Error estandar 
+sd(c(m1,m2,m3))/sqrt(length(c(m1,m2,m3)))
+
+#el error estandar es inversamente proporcional al tamaño de la muestra, 
+#si esta aumenta el error estandar disminuye.
+
+#Para el caso donde la población no sigue una distribución normal.
+set.seed(999)
+
+# Generar la población
+pop <- c(ceiling(rnorm(3500, mean = 30,sd = 3)), ceiling(runif(500, 45,51)))
+myhist <- hist(pop)
+multiplier <- myhist$counts / myhist$density
+mydensity <- density(pop)
+mydensity$y <- mydensity$y * multiplier[1]
+plot(myhist)
+lines(mydensity)
+
+# Tomar muestras en tres playas distintas
+m1 <- sample(x = pop,size = 5, replace = T)
+m2 <- sample(x = pop,size = 5, replace = T)
+m3 <- sample(x = pop,size = 5, replace = T)
+
+# Calcular media, desviación y error
+#m1
+mean(m1)
+sd(m1)
+sd(m1)/sqrt(length(m1))
+#m2
+mean(m2)
+sd(m2)
+sd(m2)/sqrt(length(m2))
+#m3
+mean(m3)
+sd(m3)
+sd(m3)/sqrt(length(m3))
+
+# Boxplot
+boxplot(cbind(m1,m2,m3))
+
+# Graficar las muestras tomadas
+muestras <- c(m1,m2,m3)
+
+myhist <- hist(muestras)
+
+multiplier <- myhist$counts / myhist$density
+mydensity <- density(muestras)
+mydensity$y <- mydensity$y * multiplier[1]
+
+plot(myhist)
+lines(mydensity)
+
+# Tomar muestras en tres playas distintas
+m1 <- sample(x = pop,size = 20, replace = T)
+m2 <- sample(x = pop,size = 20, replace = T)
+m3 <- sample(x = pop,size = 20, replace = T)
+# Calcular media, desviación y error
+mean(m1)
+sd(m1)
+sd(m1)/sqrt(length(m1))
+mean(m2)
+sd(m2)
+sd(m2)/sqrt(length(m2))
+mean(m3)
+sd(m3)
+sd(m3)/sqrt(length(m3))
+# Boxplot
+boxplot(cbind(m1,m2,m3))
+# Graficar las muestras tomadas
+muestras <- c(m1,m2,m3)
+myhist <- hist(muestras)
+multiplier <- myhist$counts / myhist$density
+mydensity <- density(muestras)
+mydensity$y <- mydensity$y * multiplier[1]
+plot(myhist)
+lines(mydensity)
+
+# Error estándar 
+sd(c(m1,m2,m3))/sqrt(length(c(m1,m2,m3)))
+
+#Ejer: Cambie el tamaño de muestra y evalúe el valor de error estándar.
+#¿Cuánto debería aumentar la muestra para que el error estándar 
+#disminuya a la mitad?
+#Ejer:  Lea el artículo: 
+#http://www.limnetica.com/documentos/limnetica/limnetica-9-1-p-67.pdf 
+#Simule las variables que evalúan en el estudio. Aplique los 
+#descriptivos estadísticos que hemos visto hasta el momento. Grafique. 
+#¿Qué otras preguntas de investigación podría formular usando esos 
+#datos? Tome los diagramas de flujo de test estadísticos y de 
+#graficado. Tome una de las preguntas que formuló y diseñe el análisis
+
+#eje mayor
+
+#I
+
+ejeMayorAI <- rnorm(n = 100, mean = 0.9, sd = 0.05)
+ejeMayorBI <- rnorm(n = 100, mean = 0.9, sd = 0.05)
+ejeMayorApobI <- sample(x = EjeMayorAI,size = 10, replace = T)
+ejeMayorBpobI <- sample(x = EjeMayorBI,size = 10, replace = T)
+
+#II
+
+ejeMayorAII <- rnorm(n = 100, mean = 1, sd = 0.05)
+ejeMayorBII <- rnorm(n = 100, mean = 1, sd = 0.05)
+ejeMayorApobII <- sample(x = EjeMayorAII,size = 10, replace = T)
+ejeMayorBpobII <- sample(x = EjeMayorBII,size = 10, replace = T)
+
+#III
+
+ejeMayorAIII <- rnorm(n = 100, mean = 1.5, sd = 0.05)
+ejeMayorBIII <- rnorm(n = 100, mean = 1.5, sd = 0.05)
+ejeMayorApobIII <- sample(x = EjeMayorAIII,size = 10, replace = T)
+ejeMayorBpobIII <- sample(x = EjeMayorBIII,size = 10, replace = T)
+
+#IV
+
+ejeMayorAIV <- rnorm(n = 100, mean = 1.75, sd = 0.05)
+ejeMayorBIV <- rnorm(n = 100, mean = 1.75, sd = 0.05)
+ejeMayorApobIV <- sample(x = EjeMayorAIV,size = 10, replace = T)
+ejeMayorBpobIV <- sample(x = EjeMayorBIV,size = 10, replace = T)
+
+#Va,b
+
+ejeMayorAVab <- rnorm(n = 100, mean = 1.8, sd = 0.05)
+ejeMayorBVab <- rnorm(n = 100, mean = 1.8, sd = 0.05)
+ejeMayorApobVab <- sample(x = EjeMayorAVab,size = 10, replace = T)
+ejeMayorBpobVab <- sample(x = EjeMayorBVab,size = 10, replace = T)
+
+#Vc
+
+ejeMayorAVc <- rnorm(n = 100, mean = 2, sd = 0.05)
+ejeMayorBVc <- rnorm(n = 100, mean = 2, sd = 0.05)
+ejeMayorApobVc <- sample(x = EjeMayorAVc,size = 10, replace = T)
+ejeMayorBpobVc <- sample(x = EjeMayorBVc,size = 10, replace = T)
+
+#eje Menor
+
+#I
+
+ejeMenorAI <- rnorm(n = 100, mean = 0.45, sd = 0.02)
+ejeMenorBI <- rnorm(n = 100, mean = 0.45, sd = 0.02)
+ejeMenorApobI <- sample(x = EjeMenorAI,size = 10, replace = T)
+ejeMenorBpobI <- sample(x = EjeMenorBI,size = 10, replace = T)
+
+#II
+
+ejeMenorAII <- rnorm(n = 100, mean = 0.5, sd = 0.02)
+ejeMenorBII <- rnorm(n = 100, mean = 0.5, sd = 0.02)
+ejeMenorApobII <- sample(x = EjeMenorAII,size = 10, replace = T)
+ejeMenorBpobII <- sample(x = EjeMenorBII,size = 10, replace = T)
+
+#III
+
+ejeMenorAIII <- rnorm(n = 100, mean = 0.55, sd = 0.02)
+ejeMenorBIII <- rnorm(n = 100, mean = 0.55, sd = 0.02)
+ejeMenorApobIII <- sample(x = EjeMenorAIII,size = 10, replace = T)
+ejeMenorBpobIII <- sample(x = EjeMenorBIII,size = 10, replace = T)
+
+#IV
+
+ejeMenorAIV <- rnorm(n = 100, mean = 0.6, sd = 0.02)
+ejeMenorBIV <- rnorm(n = 100, mean = 0.6, sd = 0.02)
+ejeMenorApobIV <- sample(x = EjeMenorAIV,size = 10, replace = T)
+ejeMenorBpobIV <- sample(x = EjeMenorBIV,size = 10, replace = T)
+
+#Va,b
+
+ejeMenorAVab <- rnorm(n = 100, mean = 0.65, sd = 0.02)
+ejeMenorBVab <- rnorm(n = 100, mean = 0.65, sd = 0.02)
+ejeMenorApobVab <- sample(x = EjeMenorAVab,size = 10, replace = T)
+ejeMenorBpobVab <- sample(x = EjeMenorBVab,size = 10, replace = T)
+
+#Vc
+
+ejeMenorAVc <- rnorm(n = 100, mean = 0.7, sd = 0.02)
+ejeMenorBVc <- rnorm(n = 100, mean = 0.7, sd = 0.02)
+ejeMayorApobVc <- sample(x = EjeMenorAVc,size = 10, replace = T)
+ejeMenorBpobVc <- sample(x = EjeMenorBVc,size = 10, replace = T)
+
+#volumen
+
+#I
+
+ejeVolumenAI <- rnorm(n = 100, mean = 0.05, sd = 0.02)
+ejeVolumenBI <- rnorm(n = 100, mean = 0.05, sd = 0.02)
+ejeVolumenApobI <- sample(x = EjeVolumenAI,size = 10, replace = T)
+ejeVolumenBpobI <- sample(x = EjeVolumenBI,size = 10, replace = T)
+
+#II
+
+ejeVolumenAII <- rnorm(n = 100, mean = 0.1, sd = 0.02)
+ejeVolumenBII <- rnorm(n = 100, mean = 0.1, sd = 0.02)
+ejeVolumenApobII <- sample(x = EjeVolumenAII,size = 10, replace = T)
+ejeVolumenBpobII <- sample(x = EjeVolumenBII,size = 10, replace = T)
+
+#III
+
+ejeVolumenAIII <- rnorm(n = 100, mean = 0.15, sd = 0.02)
+ejeVolumenBIII <- rnorm(n = 100, mean = 0.15, sd = 0.02)
+ejeVolumenApobIII <- sample(x = EjeVolumenAIII,size = 10, replace = T)
+ejeVolumenBpobIII <- sample(x = EjeVolumenBIII,size = 10, replace = T)
+
+#IV
+
+ejeVolumenAIV <- rnorm(n = 100, mean = 0.17, sd = 0.02)
+ejeVolumenBIV <- rnorm(n = 100, mean = 0.17, sd = 0.02)
+ejeVolumenApobIV <- sample(x = EjeVolumenAIV,size = 10, replace = T)
+ejeVolumenBpobIV <- sample(x = EjeVolumenIV,size = 10, replace = T)
+
+#Va,b
+
+ejeVolumenAVab <- rnorm(n = 100, mean = 0.182, sd = 0.02)
+ejeVolumenBVab <- rnorm(n = 100, mean = 0.182, sd = 0.02)
+ejeVolumenApobVab <- sample(x = EjeVolumenAVab,size = 10, replace = T)
+ejeVolumenBpobVab <- sample(x = EjeVolumenBVab,size = 10, replace = T)
+
+#Vc
+
+ejeVolumenAVc <- rnorm(n = 100, mean = 0.2, sd = 0.02)
+ejeVolumenBVc <- rnorm(n = 100, mean = 0.2, sd = 0.02)
+ejeVolumenApobVc <- sample(x = EjeVolumenAVc,size = 10, replace = T)
+ejeVolumenBpobVc <- sample(x = EjeVolumenBVc,size = 10, replace = T)
+
+#peso
+
+#I
+
+ejePesoAI <- rnorm(n = 100, mean = 0.2, sd = 0.035)
+ejePesoBI <- rnorm(n = 100, mean = 0.2, sd = 0.035)
+ejePesoApobI <- sample(x = EjePesoAI,size = 10, replace = T)
+ejePesoBpobI <- sample(x = EjePesoBI,size = 10, replace = T)
+
+#II
+
+ejePesoAII <- rnorm(n = 100, mean = 0.25, sd = 0.035)
+ejePesoBII <- rnorm(n = 100, mean = 0.25, sd = 0.035)
+ejePesoApobII <- sample(x = EjePesoAII,size = 10, replace = T)
+ejePesoBpobII <- sample(x = EjePesoBII,size = 10, replace = T)
+
+#III
+
+ejePesoAIII <- rnorm(n = 100, mean = 0.3, sd = 0.035)
+ejePesoBIII <- rnorm(n = 100, mean = 0.3, sd = 0.035)
+ejePesoApobIII <- sample(x = EjePesoAIII,size = 10, replace = T)
+ejePesoBpobIII <- sample(x = EjePesoBIII,size = 10, replace = T)
+
+#IV
+
+ejePesoAIV <- rnorm(n = 100, mean = 0.37, sd = 0.035)
+ejePesoBIV <- rnorm(n = 100, mean = 0.37, sd = 0.035)
+ejePesoApobIV <- sample(x = EjePesoAIV,size = 10, replace = T)
+ejePesoBpobIV <- sample(x = EjePesoIV,size = 10, replace = T)
+
+#Va,b
+
+ejePesoAVab <- rnorm(n = 100, mean = 0.4, sd = 0.035)
+ejePesoBVab <- rnorm(n = 100, mean = 0.4, sd = 0.035)
+ejePesoApobVab <- sample(x = EjePesoAVab,size = 10, replace = T)
+ejePesoBpobVab <- sample(x = EjePesoBVab,size = 10, replace = T)
+
+#Vc
+
+ejePesoAVc <- rnorm(n = 100, mean = 0.43, sd = 0.035)
+ejePesoBVc <- rnorm(n = 100, mean = 0.43, sd = 0.035)
+ejePesoApobVc <- sample(x = EjePesoAVc,size = 10, replace = T)
+ejePesoBpobVc <- sample(x = EjePesoBVc,size = 10, replace = T)
